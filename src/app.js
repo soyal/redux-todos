@@ -1,8 +1,11 @@
-import React from 'react';
+import React from 'react'
+import TodoListCtn from './containers/todo-list-ctn'
 
 let App = () => {
   return (
-    <div>123</div>
+    <div>
+      <TodoListCtn></TodoListCtn>
+    </div>
   );
 }
 
