@@ -35,12 +35,14 @@ function addTodo(state, action) {
  * @param {*} action 
  */
 function toggleTodo(state, action) {
-  state.map((todo) => {
+  let result = state.map((todo) => {
     // 找到action id 对应的todo
-    if(todo.id === action.id) {
+    if(todo.get('id') === action.id) {
       return todo.set('completed', !todo.get('completed'))
     }
 
     return todo
   })
+
+  return result
 }

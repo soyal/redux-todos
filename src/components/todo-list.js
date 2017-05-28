@@ -1,6 +1,6 @@
 import React from 'react';
 
-let TodoList = ({addTodo, todos}) => {
+let TodoList = ({addTodo, todos, toggleTodo}) => {
   let input
 
   return (
@@ -12,7 +12,8 @@ let TodoList = ({addTodo, todos}) => {
         {todos.map((todo) => {
           return (
             <li key={todo.get('id')} 
-                style={{textDecoration: todo.get('completed') ? 'line-throught': 'none'}}>{todo.get('text')}</li>
+                style={{textDecoration: todo.get('completed') ? 'line-through': 'none'}}
+                onClick={() => toggleTodo(todo.get('id'))}>{todo.get('text')}</li>
           );
         })}
       </ul>
