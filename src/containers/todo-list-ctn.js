@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const mapStateToProps = (state) => ({
-  todos: getVisibleTodos(state.todos, state.filter)
+  todos: getVisibleTodos(state.todos.present, state.filter)
 })
 
 const TodoListCtn = connect(mapStateToProps, mapDispatchToProps)(TodoList)

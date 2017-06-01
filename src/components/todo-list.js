@@ -7,7 +7,10 @@ let TodoList = ({addTodo, todos, toggleTodo}) => {
     <div>
       <h3>todo list</h3>
       <input type="text" ref={(node) => {input = node}}/>
-      <button type="button" onClick={() => addTodo(input.value.trim())}>todo</button>
+      <button type="button" onClick={() => {
+                                          addTodo(input.value.trim())
+                                          input.value = ''
+                                        }}>todo</button>
       <ul>
         {todos.map((todo) => {
           return (

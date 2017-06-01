@@ -1,7 +1,8 @@
 import {ADD_TODO, TOGGLE_TODO} from '../action_types';
 import {List, Map} from 'immutable';
+import undoable from 'redux-undo'
 
-export default (state = List(), action) => {
+const todos = (state = List(), action) => {
   switch(action.type) {
     case ADD_TODO: 
       return addTodo(state, action)
@@ -46,3 +47,7 @@ function toggleTodo(state, action) {
 
   return result
 }
+
+let undoableTodos = undoable(todos)
+
+export default undoableTodos
