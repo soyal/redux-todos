@@ -1,11 +1,16 @@
-import {ADD_TODO, TOGGLE_TODO} from '../action_types';
-import {List, Map} from 'immutable';
+import {ADD_TODO, 
+        TOGGLE_TODO,
+        ADD_TODOS} from '../action_types';
+import {List, Map, fromJS} from 'immutable';
 import undoable from 'redux-undo'
 
 const todos = (state = List(), action) => {
   switch(action.type) {
     case ADD_TODO: 
       return addTodo(state, action)
+
+    case ADD_TODOS:
+      return addTodos(state, action)
     
     case TOGGLE_TODO:
       return toggleTodo(state, action)
@@ -28,6 +33,17 @@ function addTodo(state, action) {
   })
 
   return state.push(todo)
+}
+
+/**
+ * 初始化的时候，批量导入todos
+ * @param {*} state 
+ * @param {*} action 
+ */
+function addTodos(state, action) {
+  let todos = fromJS(action.todos)
+
+  return state.concat(todos)
 }
 
 /**

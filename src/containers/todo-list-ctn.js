@@ -1,6 +1,6 @@
 import TodoList from '../components/todo-list'
 import {connect} from 'react-redux'
-import { addTodo } from '../actions/add-todo'
+import { addTodo, fetchTodos } from '../actions/add-todo'
 import { toggleTodo } from '../actions/toggle-todo'
 
 function getVisibleTodos(todos, filter) {
@@ -24,9 +24,11 @@ function getVisibleTodos(todos, filter) {
   }
 }
 
+const FETCH_INIT_URL = '/mock-todos.json'
 const mapDispatchToProps = (dispatch) => ({
   addTodo: (text) => dispatch(addTodo(text)),
-  toggleTodo: (id) => dispatch(toggleTodo(id))
+  toggleTodo: (id) => dispatch(toggleTodo(id)),
+  getInitData: () => dispatch(fetchTodos(FETCH_INIT_URL))
 })
 
 const mapStateToProps = (state) => ({
